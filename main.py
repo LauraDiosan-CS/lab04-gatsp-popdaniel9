@@ -4,14 +4,14 @@ from GA import GA
 def read_file(filepath):
     net = {}
     f = open(filepath, "r")
-    nr = int(f.readline())
-    net['noNodes'] = nr
+    n = int(f.readline())
+    net['noNodes'] = n
     mat = []
-    for i in range(0, nr):
+    for i in range(0, n):
         mat.append([])
     i = 0
     line = f.readline()
-    while line and i<nr:
+    while line and i<n:
         args = line.split(",")
         for arg in args:
             mat[i].append(int(arg))
@@ -22,14 +22,14 @@ def read_file(filepath):
     return net
 
 def fitnessFct(net, path):
-    val = 0
-    mat = net['mat']
+    sum = 0
+    matrice = net['mat']
     for i in range(0, len(path) - 1):
         node = path[i]
         nextNode = path[i+1]
-        val = val + mat[node-1][nextNode-1]
-    val = val + mat[path[len(path)-1]-1][path[0]-1]
-    return val
+        sum = sum + matrice[node-1][nextNode-1]
+    sum = sum + matrice[path[len(path)-1]-1][path[0]-1]
+    return sum
 
 def main():
     net = read_file("Exemplul3.txt")

@@ -38,15 +38,15 @@ class Chromosome:
         pos2 = randint(-1, self.__problParam['noNodes'] - 1)
         if (pos2 < pos1):
             pos1, pos2 = pos2, pos1
-        k = 0
+        i= 0
         newrepres = self.__repres[pos1: pos2]
         for el in c.__repres[pos2:] + c.__repres[:pos2]:
             if (el not in newrepres):
                 if (len(newrepres) < self.__problParam['noNodes'] - pos1):
                     newrepres.append(el)
                 else:
-                    newrepres.insert(k, el)
-                    k += 1
+                    newrepres.insert(i, el)
+                    i += 1
 
         offspring = Chromosome(self.__problParam)
         offspring.repres = newrepres
